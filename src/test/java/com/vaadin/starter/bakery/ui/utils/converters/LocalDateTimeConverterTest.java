@@ -1,10 +1,10 @@
 package com.vaadin.starter.bakery.ui.utils.converters;
 
-import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDateTime;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import com.vaadin.starter.bakery.test.FormattingTest;
 
@@ -13,6 +13,6 @@ public class LocalDateTimeConverterTest extends FormattingTest {
 	public void formattingShoudBeLocaleIndependent() {
 		LocalDateTimeConverter converter = new LocalDateTimeConverter();
 		String result = converter.encode(LocalDateTime.of(2016, 11, 27, 22, 15, 33));
-		assertEquals("27.11.2016 10:15 PM", result);
+		Assertions.assertEquals("27.11.2016 10:15 PM", result);
 	}
 }

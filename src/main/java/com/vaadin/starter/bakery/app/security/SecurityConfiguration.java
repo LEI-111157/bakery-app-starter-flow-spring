@@ -1,6 +1,6 @@
 package com.vaadin.starter.bakery.app.security;
 
-import com.vaadin.flow.spring.security.VaadinWebSecurityConfigurerAdapter;
+import com.vaadin.flow.spring.security.VaadinWebSecurity;
 import com.vaadin.starter.bakery.backend.data.entity.User;
 import com.vaadin.starter.bakery.backend.repositories.UserRepository;
 import com.vaadin.starter.bakery.ui.views.login.LoginView;
@@ -25,7 +25,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 @EnableWebSecurity
 @Configuration
-public class SecurityConfiguration extends VaadinWebSecurityConfigurerAdapter {
+public class SecurityConfiguration extends VaadinWebSecurity {
 
 	/**
 	 * The password encoder to use when encrypting passwords.
@@ -59,15 +59,15 @@ public class SecurityConfiguration extends VaadinWebSecurityConfigurerAdapter {
 	 */
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		super.configure(web);
-		web.ignoring().antMatchers(
-				// the robots exclusion standard
-				"/robots.txt",
-
-				// icons and images
-				"/icons/**", "/images/**",
-
-				// (development mode) H2 debugging console
-				"/h2-console/**");
+	    super.configure(web);
+	    web.ignoring().requestMatchers(
+	        // the robots exclusion standard
+	        "/robots.txt",
+	        // icons and images
+	        "/icons/**",
+	        "/images/**",
+	        // (development mode) H2 debugging console
+	        "/h2-console/**"
+	    );
 	}
 }
