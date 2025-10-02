@@ -1,0 +1,12 @@
+name: PR Notification
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notificar responsável pelo PR
+        run: echo "Um Pull Request foi aberto! O responsável deve ser notificado."
